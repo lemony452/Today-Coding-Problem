@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <title>출력결과</title>
+</head>
+<body>
+  <script>
+    // 연속된 문자는 문자 바로 오른쪽에 반복횟수 표시
+    // 반복횟수가 1이면 생략
+
+    function solution(str) {
+        let ans = ''; // 압축된 문자열
+        let word = str[0]; // 비교할 문자
+        let cnt = 1; // 반복 횟수
+        
+        for (let i=1; i<str.length; i++) {
+          if (str[i] !== word) { // 해당 문자가 비교 문자와 다를 경우
+            cnt === 1 ? ans += word : ans += word + String(cnt);
+            word = str[i];
+            cnt = 1; // 초기화
+          } else { // 같으면 반복 횟수 더하기
+            cnt += 1;
+          }
+          // 마지막 문자열에 도달하면 추가 필요
+          if (i === str.length - 1) {
+            cnt === 1 ? ans += word : ans += word + String(cnt);
+          }
+        }
+
+        return ans
+    }
+
+    const input = 'KKHSSSSSSS';
+    console.log(solution(input));
+  </script>
+</body>
+</html>
