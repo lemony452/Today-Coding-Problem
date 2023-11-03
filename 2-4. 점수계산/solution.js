@@ -1,0 +1,20 @@
+// OX 퀴즈 맞춘 문제의 총 점수 계산하기
+// 문제를 연속으로 맞추면 점수 누적
+
+function solution(arr){         
+  let answer=0, cnt=0;
+  
+  arr.forEach((point) => {
+    if (point === 0) cnt = 0;
+    else {
+      cnt += 1;
+      answer += cnt;
+    }
+    // console.log(point, cnt);
+  })
+
+  return answer;
+}
+
+let arr=[1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+console.log(solution(arr));
