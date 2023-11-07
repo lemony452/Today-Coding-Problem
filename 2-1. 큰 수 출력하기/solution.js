@@ -15,5 +15,5 @@ function solution(N, input) {
   return ans
 }
 
-const [N, input] = [6, '7 3 9 5 6 12'];
+const arr = [7, 3, 9, 5, 6, 12];
 console.log(solution(N, input)); // 7 9 6 12
