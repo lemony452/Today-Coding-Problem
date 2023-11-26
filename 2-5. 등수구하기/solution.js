@@ -2,12 +2,26 @@
 // 같은 점수의 학생들은 높은 등수로 동일 처리
 
 function solution(arr){  
-  let n=arr.length;
-  let answer=Array.from({length:n}, ()=>1);
-
+  let n = arr.length;
+  let answer = Array.from({length:n}, ()=>1); // [1, 1, 1, 1, 1]
+  
+  const originalArr = [...arr]; // 원본 배열
+  arr.sort((a, b) => b - a); // 내림차순 정렬된 배열
+  
+  let rank = 1; // 1등부터 시작
+  arr.reduce((prevScore, curScore, idx) => {
+    if (prevScore !== -1 && prevScore !== curScore) rank = idx+1;
+    
+    originalArr.forEach((score, i) => {
+      if (score === curScore) answer[i] = rank;
+    })
+    
+    return curScore
+  }, -1)
   
   return answer;
 }
 
 let arr=[87, 89, 92, 100, 76];
+// let arr=[100, 100, 100, 100, 100];
 console.log(solution(arr));
